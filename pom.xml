@@ -139,12 +139,6 @@
 		</snapshotRepository>
 	</distributionManagement>
 
-	<servers>
-		<server>
-			<id>nexus-snapshots</id>
-			<username>admin</username>
-			<password>Pass123!</password>
-		</server>
-	</servers>
+
 
 </project>
