@@ -3,9 +3,9 @@ pipeline {
        label 'agent2'
     }
     stages {
-        stage('build') {
+        stage('clean') {
             steps {
-                sh 'mvn clean build'
+                sh 'mvn clean'
             }
         }
         stage('deploy') {
