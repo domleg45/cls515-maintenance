@@ -1,7 +1,10 @@
-	<servers>
-		<server>
-			<id>nexus-snapshots</id>
-			<username>admin</username>
+	<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+        <server>
+			<id>dev</id>
+			<username>deploy-user</username>
 			<password>Pass123!</password>
-		</server>
-	</servers>
+        </server>
+    </servers>
+</settings>
