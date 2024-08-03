@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>edu.mv</groupId>
 	<artifactId>maintenance</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5</version>
 	<name>maintenance</name>
 	<description>Projet maintenance</description>
 	<url/>
@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<jib.version>3.2.0</jib.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,12 +58,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-docker-compose</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
@@ -97,12 +92,12 @@
 		<repository>
             <id>dev</id>
             <name>dev</name>
-			<url>http://192.168.220.129:8081/repository/dev-release/</url>
+			<url>http://172.16.189.128:8081/repository/dev/</url>
 		</repository>
 		<snapshotRepository>
             <id>dev</id>
             <name>dev Snapshots</name>
-			<url>http://192.168.220.129:8081/repository/dev-snapshot/</url>
+			<url>http://172.16.189.128:8081/repository/dev-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -130,12 +125,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>${maven-deploy-plugin.version}</version>
-			</plugin>					
+			</plugin>
 		</plugins>
 	</build>
-
-
-
-
-
 </project>
