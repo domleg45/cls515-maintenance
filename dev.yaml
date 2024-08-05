@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: registry
+spec:
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: registry
+subsets:
+  - addresses:
+      - ip: 172.16.189.130
+    ports:
+      - port: 8082
