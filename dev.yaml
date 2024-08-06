@@ -13,6 +13,7 @@ kind: Endpoints
 apiVersion: v1
 metadata:
   name: registry
+  namespace: demomaintenance
 subsets:
   - addresses:
       - ip: 172.16.189.130

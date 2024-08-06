@@ -16,7 +16,10 @@ spec:
       containers:
         - name: maintenance
           image: 172.16.189.130:8082/maintenance:0.0.5
+          stdin: true
+          tty: true
           ports:
             - containerPort: 8080
+      restartPolicy: Always
       imagePullSecrets:
         - name: regcred2
