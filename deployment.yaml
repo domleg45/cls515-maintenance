@@ -17,3 +17,5 @@ spec:
           image: 172.16.189.130:8082/maintenance:0.0.5
           ports:
             - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred2
