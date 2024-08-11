@@ -16,8 +16,6 @@ spec:
       containers:
         - name: maintenance
           image: 172.16.189.130:8082/edu.mv/maintenance:0.0.7
-          stdin: true
-          tty: true
           ports:
             - containerPort: 8080
       restartPolicy: Always
