@@ -4,7 +4,7 @@ metadata:
   name: maintenance
   namespace: demomaintenance
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: maintenance
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: maintenance
-          image: 172.16.189.130:8082/maintenance:0.0.6
+          image: 172.16.189.130:8082/edu.mv/maintenance:0.0.6
           stdin: true
           tty: true
           ports:
