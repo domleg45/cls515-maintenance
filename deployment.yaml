@@ -4,7 +4,7 @@ metadata:
   name: maintenance
   namespace: demomaintenance
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: maintenance
