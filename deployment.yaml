@@ -14,8 +14,8 @@ spec:
         app: maintenance
     spec:
       containers:
-        - name: maintenance
-          image: 172.16.189.130:8082/edu.mv/maintenance:0.0.7
+        - name: maintenance:0.0.7
+          image: 172.16.189.130:8082/edu.mv/maintenance
           ports:
             - containerPort: 8080
       restartPolicy: Always
