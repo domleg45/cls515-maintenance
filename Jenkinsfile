@@ -1,6 +1,6 @@
 pipeline {
     agent { 
-       label 'agent2'
+       label 'AgentJava'
     }
     stages {
         stage('clean') {
@@ -23,7 +23,7 @@ pipeline {
 
         stage('push image')
             steps {
-                sh "docker login -u deploy-user --password todopass 172.16.189.128:8081"
+                sh "docker login -u deploy-user --password todopass 172.16.189.130:8081"
                 sh "docker push dlegare/maintenance"
             }
         }
