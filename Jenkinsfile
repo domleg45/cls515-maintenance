@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('push image')
+        stage('push image') {
             steps {
                 sh "docker login -u deploy-user --password todopass 172.16.189.130:8081"
                 sh "docker push dlegare/maintenance"
