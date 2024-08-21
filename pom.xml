@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>edu.mv</groupId>
 	<artifactId>maintenance</artifactId>
-	<version>0.0.6</version>
+	<version>0.0.7</version>
 	<name>maintenance</name>
 	<description>Projet maintenance</description>
 	<url/>
@@ -92,12 +92,12 @@
 		<repository>
             <id>dev</id>
             <name>dev</name>
-			<url>http://172.16.189.128:8081/repository/dev/</url>
+			<url>http://172.16.189.130:8081/repository/dev/</url>
 		</repository>
 		<snapshotRepository>
             <id>dev</id>
             <name>dev Snapshots</name>
-			<url>http://172.16.189.128:8081/repository/dev-snapshot/</url>
+			<url>http://172.16.189.130:8081/repository/dev-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
