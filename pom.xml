@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>edu.mv</groupId>
 	<artifactId>maintenance</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 	<name>maintenance</name>
 	<description>Projet maintenance</description>
 	<url/>
@@ -31,6 +31,7 @@
 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
 		<jib.version>3.2.0</jib.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -90,42 +91,10 @@
 	
 	<distributionManagement>
 		<repository>
-            <id>dev</id>
-            <name>dev</name>
-			<url>http://172.16.189.130:8081/repository/dev/</url>
+			<id>dev-docker</id>
+			<name>dev-docker</name>
+			<url>http://172.16.189.130:8081/repository/dev-docker/</url>
 		</repository>
-		<snapshotRepository>
-            <id>dev</id>
-            <name>dev Snapshots</name>
-			<url>http://172.16.189.130:8081/repository/dev-snapshot/</url>
-		</snapshotRepository>
 	</distributionManagement>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>${maven-deploy-plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-		   	<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.2</version>
-   			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>${maven-deploy-plugin.version}</version>
-			</plugin>
-		</plugins>
-	</build>
 </project>

@@ -8,23 +8,31 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-        stage('deploy') {
+        stage('build') {
             steps {
-                sh 'mvn clean deploy -s ./settings.xml'
+                sh 'mvn clean install'
             }
         }
 
         stage('docker build') {
             steps {
                 echo 'Building Image ...'
-                sh "docker build . -t 172.16.189.130:8082/edu.mv/maintenance:latest"
+                sh "docker build . -t 172.16.189.130:8082/edu.mv/maintenance:0.0.8"
             }
         }
 
-        stage('push image') {
+        stage('Push image to Nexus') {
             steps {
-                sh "docker login -u deploy-user --password todopass 172.16.189.130:8081"
-                sh "docker push dlegare/maintenance"
+                echo 'Publish Image to Nexus'
+                sh "cat nexus.txt | docker login 172.16.189.130:8082 --username deploy-user --password-stdin"
+                sh "docker push 172.16.189.130:8082/edu.mv/maintenance:0.0.8"
+            }
+        }
+
+        stage('Deploy Image to Minikube') {
+            steps {
+                echo 'Deploy image to minikube'
+                sh "minikube kubectl -- apply -f . --namespace=demomaintenance"
             }
         }
     }
