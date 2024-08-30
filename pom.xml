@@ -10,8 +10,9 @@
 	</parent>
 	<groupId>edu.mv</groupId>
 	<artifactId>maintenance</artifactId>
-	<version>0.0.11</version>
+	<version>0.0.12</version>
 	<name>maintenance</name>
+	<packaging>jar</packaging>
 	<description>Projet maintenance</description>
 	<url/>
 	<licenses>
@@ -91,6 +92,10 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<!-- Build an executable JAR -->
 				<groupId>org.apache.maven.plugins</groupId>
