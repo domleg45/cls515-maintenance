@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
         - name: maintenance
-          image: 172.16.189.130:8082/edu.mv/maintenance:0.0.9
+          image: 172.16.189.130:8082/edu.mv/maintenance:0.0.10
           ports:
-            - containerPort: 8082
+            - containerPort: 8080
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always
