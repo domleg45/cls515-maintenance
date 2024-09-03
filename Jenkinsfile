@@ -17,15 +17,15 @@ pipeline {
         stage('docker build') {
             steps {
                 echo 'Building Image ...'
-                sh "docker build . -t 172.16.189.130:8082/edu.mv/maintenance:0.0.16"
+                sh "docker build . -t ${NEXUS_1}/edu.mv/maintenance:0.0.17"
             }
         }
 
         stage('Push image to Nexus') {
             steps {
                 echo 'Publish Image to Nexus'
-                sh "cat nexus.txt | docker login 172.16.189.130:8082 --username deploy-user --password-stdin"
-                sh "docker push 172.16.189.130:8082/edu.mv/maintenance:0.0.16"
+                sh "cat nexus.txt | docker login ${NEXUS_1} --username deploy-user --password-stdin"
+                sh "docker push ${NEXUS_1}/edu.mv/maintenance:0.0.17"
             }
         }
 
