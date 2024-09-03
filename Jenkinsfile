@@ -2,6 +2,15 @@ pipeline {
     agent { 
        label 'JavaAgent'
     }
+
+    environment {
+        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+        IMAGE = readMavenPom().getArtifactId()
+        VERSION = readMavenPom().getVersion()
+    }
+
+
+
     stages {
         stage('clean') {
             steps {
@@ -17,7 +26,7 @@ pipeline {
         stage('docker build') {
             steps {
                 echo 'Building Image ...'
-                sh "docker build . -t ${NEXUS_1}/edu.mv/maintenance:0.0.17"
+                sh "docker build . -t ${NEXUS_1}/edu.mv/maintenance:${VERSION}"
             }
         }
 
@@ -25,7 +34,7 @@ pipeline {
             steps {
                 echo 'Publish Image to Nexus'
                 sh "cat nexus.txt | docker login ${NEXUS_1} --username deploy-user --password-stdin"
-                sh "docker push ${NEXUS_1}/edu.mv/maintenance:0.0.17"
+                sh "docker push ${NEXUS_1}/edu.mv/maintenance:${VERSION}"
             }
         }
 
