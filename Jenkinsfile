@@ -9,8 +9,6 @@ pipeline {
         VERSION = readMavenPom().getVersion()
     }
 
-
-
     stages {
         stage('clean') {
             steps {
@@ -25,23 +23,23 @@ pipeline {
 
         stage('docker build') {
             steps {
-                echo 'Building Image ...'
+                echo 'Building Image edu.mv/maintenance'
                 sh "docker build . -t ${NEXUS_1}/edu.mv/maintenance:${VERSION}"
             }
         }
 
         stage('Push image to Nexus') {
             steps {
-                echo 'Publish Image to Nexus'
-                sh "cat nexus.txt | docker login ${NEXUS_1} --username deploy-user --password-stdin"
+                echo 'Publish Image to Nexus ${NEXUS_1}'
+                sh "echo ${NEXUS_DOCKER_PASSWORD} | docker login ${NEXUS_1} --username ${NEXUS_DOCKER_USERNAME} --password-stdin"
                 sh "docker push ${NEXUS_1}/edu.mv/maintenance:${VERSION}"
             }
         }
 
         stage('Deploy Image to Minikube') {
             steps {
-                echo 'Deploy image to minikube'
-                sh "minikube kubectl -- apply -f . --namespace=demomaintenance"
+                echo 'Deploy image to minikube env ${ENV_KUBE}'
+                sh "minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance"
             }
         }
     }

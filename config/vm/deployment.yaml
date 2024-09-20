@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maintenance
+  namespace: demomaintenance
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: maintenance
+  template:
+    metadata:
+      labels:
+        app: maintenance
+    spec:
+      containers:
+        - name: maintenance
+          image: 10.10.0.30:8082/edu.mv/maintenance:0.0.22
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
+      restartPolicy: Always
