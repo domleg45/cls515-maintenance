@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>edu.mv</groupId>
 	<artifactId>maintenance</artifactId>
-	<version>0.0.23</version>
+	<version>0.0.24</version>
 	<name>maintenance</name>
 	<packaging>jar</packaging>
 	<description>Projet maintenance</description>
@@ -49,13 +49,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.okta.spring</groupId>
-			<artifactId>okta-spring-boot-starter</artifactId>
-			<version>3.0.7</version>
-		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
