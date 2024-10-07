@@ -41,11 +41,5 @@ pipeline {
             }
         }
 
-        stage('Deploy Image to Minikube') {
-            steps {
-                echo 'Deploy image to minikube env ${ENV_KUBE}'
-                sh "minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance"
-            }
-        }
     }
 }
