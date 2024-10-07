@@ -29,8 +29,7 @@ pipeline {
         stage('Push image to Nexus') {
             steps {
                 echo 'Login to Nexus ${NEXUS_1}'
-                sh "echo ${ADMIN_PASSWORD} >> pass.txt"
-                sh "cat pass.txt | docker login ${NEXUS_1} --username ${ADMIN_USERNAME} --password-stdin"
+                sh "echo ${ADMIN_PASSWORD} | docker login ${NEXUS_1} --username ${ADMIN_USERNAME} --password-stdin"
             }
         }
 
