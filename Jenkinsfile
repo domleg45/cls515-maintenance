@@ -1,6 +1,6 @@
 pipeline {
     agent { 
-       label 'JavaAgent2'
+       label 'JavaAgent'
     }
 
     environment {
@@ -29,7 +29,8 @@ pipeline {
         stage('Push image to Nexus') {
             steps {
                 echo 'Login to Nexus ${NEXUS_1}'
-                sh "echo ${ADMIN_PASSWORD} | docker login ${NEXUS_1} --username ${ADMIN_USERNAME} --password-stdin"
+                sh "${NEXUS_DOCKER_PASSWORD} >> pass.txt"
+                sh "cat pass.txt | docker login ${NEXUS_1} --username ${NEXUS_DOCKER_USERNAME} --password-stdin"
             }
         }
 
