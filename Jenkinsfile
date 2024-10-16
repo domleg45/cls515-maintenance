@@ -41,10 +41,9 @@ pipeline {
 
         stage('Push image to Nexus') {
             steps {
-                echo 'Login to Nexus ${NEXUS_1}'
-                sh "${NEXUS_PASSWORD} >> pass.txt"
-                sh "cat pass.txt | docker login ${NEXUS_1} --username ${NEXUS_DOCKER_USERNAME} --password-stdin"
-                sh "docker push ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}"
+                echo 'Login to Nexus'
+                sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_1} --username ${NEXUS_DOCKER_USERNAME} --password-stdin'
+                sh 'docker push ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}'
             }
         }
 
