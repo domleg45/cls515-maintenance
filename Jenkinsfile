@@ -49,9 +49,13 @@ pipeline {
         stage ('Deploy to Kubernetes') {
             steps{
                 sshagent(credentials : ['minikube-dev-1-ssh']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ${USER_KUBE_1}@${KUBE_1} uptime'
-                    sh 'ssh -v ${USER_KUBE_1}@{KUBE_1}'
-                    sh 'minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance'
+                  sh '''
+                      [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
+                      ssh-keyscan -t rsa,dsa 10.10.0.41 >> ~/.ssh/known_hosts
+                      ssh user1@10.10.0.41 
+                      minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance
+                  '''
+                    sh ''
                 }
             }
         }
