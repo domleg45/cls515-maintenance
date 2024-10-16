@@ -53,9 +53,9 @@ pipeline {
                       [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
                       ssh-keyscan -t rsa,dsa 10.10.0.41 >> ~/.ssh/known_hosts
                       ssh user1@10.10.0.41
+                      scp config/* 10.10.0.41/home/user1/config
                       minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance
                   '''
-                    sh ''
                 }
             }
         }
