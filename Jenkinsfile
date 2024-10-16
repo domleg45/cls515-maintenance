@@ -46,8 +46,7 @@ pipeline {
                 sh 'docker push ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}'
             }
         }
-
-        tage ('Deploy to Kubernetes') {
+        stage ('Deploy to Kubernetes') {
             steps{
                 sshagent(credentials : ['minikube-dev-1']) {
                     sh 'ssh -o StrictHostKeyChecking=no ${USER_KUBE_1}@${KUBE_1} uptime'
