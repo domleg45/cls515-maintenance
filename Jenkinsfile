@@ -1,6 +1,6 @@
 pipeline {
     agent { 
-       label 'JavaAgent'
+       label 'JavaAgent2'
     }
 
     environment {
@@ -11,6 +11,11 @@ pipeline {
     }
 
     stages {
+        stage('clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
         stage('compile') {
             steps {
                 sh 'mvn compile'
