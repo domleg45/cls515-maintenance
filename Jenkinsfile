@@ -54,8 +54,8 @@ pipeline {
                       ssh-keyscan -t rsa,dsa 10.10.0.41 >> ~/.ssh/known_hosts
                       ssh user1@10.10.0.41
                       scp -r config/* 10.10.0.41:/home/user1
-                      minikube kubectl -- create namespace demomaintenance
-                      minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance
+                      ssh user1@10.10.0.41 "minikube kubectl -- create namespace demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance"
                   '''
                 }
             }
