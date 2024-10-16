@@ -47,5 +47,15 @@ pipeline {
             }
         }
 
+        tage ('Deploy to Kubernetes') {
+            steps{
+                sshagent(credentials : ['minikube-dev-1']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ${USER_KUBE_1}@${KUBE_1} uptime'
+                    sh 'ssh -v ${USER_KUBE_1}@{KUBE_1}'
+                    sh 'minikube kubectl -- apply -f ./config/${ENV_KUBE}/. --namespace=demomaintenance'
+                }
+            }
+        }
+
     }
 }
