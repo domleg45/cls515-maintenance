@@ -35,15 +35,15 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Image edu.mv/maintenance'
-                sh "docker build . -t ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}"
+                //sh "docker build . -t ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}"
             }
         }
 
         stage('Push image to Nexus') {
             steps {
                 echo 'Login to Nexus'
-                sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_1} --username ${NEXUS_DOCKER_USERNAME} --password-stdin'
-                sh 'docker push ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}'
+                //sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_1} --username ${NEXUS_DOCKER_USERNAME} --password-stdin'
+                //sh 'docker push ${NEXUS_1}/edu.mv/${ARTIFACT}:${VERSION}'
             }
         }
         stage ('Deploy to Kubernetes') {
