@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: maintenance
-          image: 10.10.0.30:8082/edu.mv/maintenance:0.0.27
+          image: 10.10.0.30:8082/edu.mv/maintenance:0.0.28
           ports:
             - containerPort: 8080
       imagePullSecrets:
