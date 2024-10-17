@@ -16,4 +16,4 @@ spec:
             service:
               name: maintenance
               port:
-                number: 8080
+                number: 80

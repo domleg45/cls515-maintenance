@@ -54,7 +54,12 @@ pipeline {
                       ssh-keyscan -t rsa,dsa 10.10.0.41 >> ~/.ssh/known_hosts
                       ssh user1@10.10.0.41
                       scp -r config/${ENV_KUBE} 10.10.0.41:/home/user1
-                      ssh user1@10.10.0.41 "minikube kubectl -- apply -f ./${ENV_KUBE}/. --namespace=demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- delete ns demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- create namespace demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- create secret docker-registry regcred --docker-server=${NEXUS_1} --docker-username=${NEXUS_DOCKER_USERNAME} --docker-password=${NEXUS_PASSWORD} --docker-email=de@deploy.com --namespace=demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- apply -f ./${ENV_KUBE}/service.yaml --namespace=demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- apply -f ./${ENV_KUBE}/deployment.yaml --namespace=demomaintenance"
+                      ssh user1@10.10.0.41 "minikube kubectl -- apply -f ./${ENV_KUBE}/maintenance-ingress.yaml --namespace=demomaintenance"
                   '''
                 }
             }
